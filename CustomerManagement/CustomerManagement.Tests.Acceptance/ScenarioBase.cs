@@ -1,7 +1,9 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using System.Net.Http;
+using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using CustomerManagement.Api;
 using CustomerManagement.Api.Repositories;
+using CustomerManagement.Client;
 using Microsoft.Owin.Testing;
 using Rhino.Mocks;
 using TechTalk.SpecFlow;
@@ -12,6 +14,8 @@ namespace CustomerManagement.Tests.Acceptance
     {
         private TestServer _server;
         private WindsorContainer _windsorContainer;
+
+        public CustomerManagementApiClient ApiClient;
 
         [BeforeScenario(Order = 0)]
         public void Start()
@@ -27,7 +31,7 @@ namespace CustomerManagement.Tests.Acceptance
             //the "get" property unfortunately we need one httpclient to 
             //add the default header to for the acceptance tests. Ugh!
 
-            var httpClient = _server.HttpClient;
+            ApiClient = new CustomerManagementApiClient(_server.HttpClient);
 
             Rebind<ISqlConnectionFactory>(new RepositoryConnectionFactory(FeatureContext.Current["Title"].ToString()));
         }

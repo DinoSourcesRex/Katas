@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using CustomerManagement.Api.Models;
+using CustomerManagement.Client.Models;
 
 namespace CustomerManagement.Api.Repositories
 {

@@ -87,6 +87,10 @@
       <Project>{B1FF9F67-B459-4EE0-AB8E-BB20B1AFA4C7}</Project>
       <Name>CustomerManagement.Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CustomerManagement.Client\CustomerManagement.Client.csproj">
+      <Project>{1AD477D4-4C5D-472F-9BA1-F76CB012FA4C}</Project>
+      <Name>CustomerManagement.Client</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

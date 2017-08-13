@@ -19,7 +19,7 @@ namespace CustomerManagement.Api.Windsor
                 .UsingFactoryMethod(() => new HttpContextWrapper(HttpContext.Current)));
 
             container.Register(Classes.FromThisAssembly()
-                .InNamespace("Ud.Flaap", includeSubnamespaces: true)
+                .InNamespace("CustomerManagement.Api", includeSubnamespaces: true)
                 .WithServiceDefaultInterfaces()
                 .LifestyleTransient());
         }

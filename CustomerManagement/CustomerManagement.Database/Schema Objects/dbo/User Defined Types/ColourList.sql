@@ -1,0 +1,7 @@
+﻿CREATE TYPE [dbo].[ColourList] AS TABLE (
+	[Colour] NVARCHAR(30) NOT NULL,
+	PRIMARY KEY CLUSTERED([Colour] DESC))
+
+GO
+GRANT EXECUTE
+	ON TYPE::[dbo].[ColourList] TO PUBLIC

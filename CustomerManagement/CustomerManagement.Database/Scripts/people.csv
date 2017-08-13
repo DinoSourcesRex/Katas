@@ -1,0 +1,12 @@
+﻿PersonId,Name,DateActive,IsWebCustomer,PreviouslyOrdered
+1,Willis Tibbs,2011-02-05 00:00:00,1,0
+2,Sharon Halt,2016-07-26 00:00:00,0,0
+3,Patrick Kerr,2016-08-31 00:00:00,1,1
+4,Lilly Hale,2015-01-01 00:00:00,0,0
+5,Joel Daly,2014-04-14 00:00:00,1,1
+6,Imogen Kent,2015-02-17 00:00:00,0,0
+7,George Edwards,2016-11-05 00:00:00,1,0
+8,Gabriel Franics,2015-05-29 00:00:00,0,0
+9,Courtney Arnold,2014-08-21 00:00:00,1,1
+10,Brian Allen,2013-04-11 00:00:00,1,1
+11,Bo Bob,2017-01-23 00:00:00,1,0

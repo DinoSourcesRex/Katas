@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using CustomerManagement.Api.Models;
 using CustomerManagement.Api.Repositories;
+using CustomerManagement.Client.Models;
 
 namespace CustomerManagement.Api.Controllers
 {
@@ -19,11 +19,11 @@ namespace CustomerManagement.Api.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> GetAsync()
         {
-            var customerList = await _repository.GetLatestCustomersAsync();
+            var customerList = await _repository.GetLatestCustomersAsync().ConfigureAwait(false);
 
             foreach (var customer in customerList)
             {
-                customer.Palindrome = customer.FirstName.ToLower().SequenceEqual(customer.FirstName.ToLower().Reverse());
+                customer.Palindrome = customer.Name.ToLower().SequenceEqual(customer.Name.ToLower().Reverse());
             }
 
             return Ok(customerList);
@@ -33,7 +33,7 @@ namespace CustomerManagement.Api.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> UpsertAsync(UpsertCustomer customer)
         {
-            return Ok(await _repository.UpsertCustomerAsync(customer));
+            return Ok(await _repository.UpsertCustomerAsync(customer).ConfigureAwait(false));
         }
     }
 }

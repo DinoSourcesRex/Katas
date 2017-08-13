@@ -5,8 +5,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using CustomerManagement.Api.Controllers;
-using CustomerManagement.Api.Models;
 using CustomerManagement.Api.Repositories;
+using CustomerManagement.Client.Models;
 using NUnit.Framework;
 using Rhino.Mocks;
 
@@ -60,7 +60,7 @@ namespace CustomerManagement.Tests.Controllers
             {
                 customerList.Add(new Customer
                 {
-                    FirstName = customer,
+                    Name = customer,
                     Palindrome = false
                 });
             }
@@ -83,7 +83,7 @@ namespace CustomerManagement.Tests.Controllers
             {
                 customerList.Add(new Customer
                 {
-                    FirstName = customer,
+                    Name = customer,
                     Palindrome = false
                 });
             }

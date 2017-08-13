@@ -20,8 +20,7 @@ namespace CustomerManagement.Api.Windsor
             HttpControllerDescriptor controllerDescriptor,
             Type controllerType)
         {
-            var controller =
-                (IHttpController)_container.Resolve(controllerType);
+            var controller = (IHttpController)_container.Resolve(controllerType);
 
             request.RegisterForDispose(
                 new Release(

@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="appsettings.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -126,10 +127,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\WindsorConfig.cs" />
     <Compile Include="Repositories\CustomerManagementRepository.cs" />
+    <Compile Include="Repositories\DataTableConversionExtensions.cs" />
+    <Compile Include="Repositories\Dto\Customer.cs" />
     <Compile Include="Repositories\ICustomerManagementRepository.cs" />
-    <Compile Include="Models\Customer.cs" />
     <Compile Include="Controllers\CustomerManagementController.cs" />
-    <Compile Include="Models\UpsertCustomer.cs" />
     <Compile Include="Logging\ExceptionLogger.cs" />
     <Compile Include="Logging\RequestResponseLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -140,7 +141,12 @@
     <Compile Include="Windsor\LoggerInstaller.cs" />
     <Compile Include="Windsor\WindsorCompositionRoot.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CustomerManagement.Client\CustomerManagement.Client.csproj">
+      <Project>{1ad477d4-4c5d-472f-9ba1-f76cb012fa4c}</Project>
+      <Name>CustomerManagement.Client</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

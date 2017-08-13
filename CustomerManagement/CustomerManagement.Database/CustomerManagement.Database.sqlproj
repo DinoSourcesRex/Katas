@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{d03b114e-9766-4a5c-adb0-cd473108b2b7}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -63,9 +63,38 @@
     <Folder Include="Schema Objects\dbo\Indexes" />
     <Folder Include="Schema Objects\dbo\Stored Procedures" />
     <Folder Include="Schema Objects\dbo\Tables" />
+    <Folder Include="Schema Objects\dbo\User Defined Types" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema Objects\dbo\Tables\Customer.sql" />
-    <Build Include="Schema Objects\dbo\Tables\CustomerColor.sql" />
+    <Build Include="Schema Objects\dbo\Tables\CustomerColour.sql" />
+    <Build Include="Schema Objects\dbo\Stored Procedures\Customer_GetLatest.sql" />
+    <Build Include="Schema Objects\dbo\Stored Procedures\Customer_Upsert.sql" />
+    <Build Include="Schema Objects\dbo\Tables\Colour.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="CustomerManagement.Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\SeedScript.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CustomerManagement.Database.publish.xml" />
+    <Build Include="Schema Objects\dbo\User Defined Types\ColourList.sql" />
+    <None Include="Scripts\people.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\colours.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\favourite_colours.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)\$(OutDir)CustomerManagement.Database.dacpac" "$(SolutionDir)dacpac\" /Y
+xcopy "$(ProjectDir)\$(OutDir)\Scripts\colours.csv" "c:\temp\$(ProjectName)\Scripts\" /Y
+xcopy "$(ProjectDir)\$(OutDir)\Scripts\favourite_colours.csv" "c:\temp\$(ProjectName)\Scripts\" /Y
+xcopy "$(ProjectDir)\$(OutDir)\Scripts\people.csv" "c:\temp\$(ProjectName)\Scripts\" /Y</PostBuildEvent>
+  </PropertyGroup>
 </Project>
