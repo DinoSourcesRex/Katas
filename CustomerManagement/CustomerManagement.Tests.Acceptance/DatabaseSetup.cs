@@ -19,6 +19,8 @@ namespace CustomerManagement.Tests.Acceptance
         private static DacPackage GetDacPackage(string packageName)
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            int removeAtIndex = basePath.IndexOf($"\\{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}");
+            basePath = $"{basePath.Remove(removeAtIndex)}\\dacpac";
 
             if (NCrunchEnvironment.NCrunchIsResident())
             {
