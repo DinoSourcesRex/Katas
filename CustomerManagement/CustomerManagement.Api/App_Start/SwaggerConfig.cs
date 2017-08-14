@@ -14,7 +14,7 @@ namespace CustomerManagement.Api
                 .EnableSwagger(c =>
                 {
                     c.RootUrl(OwinRootUrlResolver);
-                    c.SingleApiVersion("v1", "Payment Provider API");
+                    c.SingleApiVersion("v1", "CustomerManagement.Api");
                 })
                 .EnableSwaggerUi(c =>
                 {

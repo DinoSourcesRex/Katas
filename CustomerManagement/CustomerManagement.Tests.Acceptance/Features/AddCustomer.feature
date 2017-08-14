@@ -32,7 +32,7 @@ Background:
 		| Hodr    | False             | False       | 01-01-2015 | White,Red          |
 	And the following new customer
 		| Name   | PreviouslyOrdered | WebCustomer | LastActive | FavouriteColours |
-		| Ragnar | False             | True        | 01-01-2017 | Red,Black,Green  |
+		| Ragnar | False             | True        | 01-01-2017 | Red,Black,Indigo  |
 
 Scenario: When a new customer is added are they on the list?
 	When I add add new customer

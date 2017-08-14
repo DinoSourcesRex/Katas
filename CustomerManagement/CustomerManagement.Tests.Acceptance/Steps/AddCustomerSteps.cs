@@ -56,7 +56,7 @@ namespace CustomerManagement.Tests.Acceptance.Steps
                 r.PreviouslyOrdered == _upsertResultContext.NewCustomer.PreviouslyOrdered &&
                 r.WebCustomer == _upsertResultContext.NewCustomer.WebCustomer && 
                 r.LastActive == _upsertResultContext.NewCustomer.LastActive &&
-                r.FavouriteColours.All(item => _upsertResultContext.NewCustomer.FavouriteColours.Contains(item))));
+                _upsertResultContext.NewCustomer.FavouriteColours.All(item => r.FavouriteColours.Contains(item))));
         }
 
         [Then(@"I should recieve a successful response")]
