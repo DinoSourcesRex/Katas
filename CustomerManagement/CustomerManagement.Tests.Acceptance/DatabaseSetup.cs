@@ -58,6 +58,7 @@ namespace CustomerManagement.Tests.Acceptance
             Console.WriteLine($"Database Deleted: {ScenarioRepository.DbName}");
         }
 
+        [AfterScenario("dbdependent")]
         public static void ClearDate()
         {
             Console.WriteLine($"Truncating Transactions for: {ScenarioRepository.DbName}");

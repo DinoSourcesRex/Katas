@@ -8,6 +8,13 @@ If you have any issues with the NuGet restore run `Update-Package -reinstall` fr
 
 The scripts from the database project will also be xcopied to `C:\Temp\CustomerManagement.Database\Scripts`. This is so that ncrunch can pick them up when running the in-memory tests.
 
+A dacpac will be built to the subfolder `CustomerManagement\dacpac`
+
+#### Live Db tests
+This project features a live db test. The test project requires a connection string in the `DatabaseSetup` class. Should probably pull this into the `.config` class come to think of it!
+
+A dacpac will be built to the subfolder `CustomerManagement\dacpac`. CSV files, which are used to seed the db, will be pulled to `C:\Temp\CustomerManagement.Database\Scripts`. This will occur as a post-build event on the Database project.
+
 ## Criteria
 
 X Company require a web based user interface to manage prospective and existing customer records, containing information on particular characteristics and preferences captured from various sources. The solution must be quick, responsive, and reliable. 
@@ -49,6 +56,7 @@ The update form will contain a set of fields to update the database record for t
 Once updated the update screen will be closed and user will be taken back to the dashboard.
 
 #### Insert Form
+##### Not a copying mistake by me, this is as is
 
 The update form will contain a set of fields to update the database record for the selected customer containing the following populated fields.
 

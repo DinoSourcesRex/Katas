@@ -18,12 +18,12 @@ namespace CustomerManagement.Client
         {
             var response = await _httpClient.GetAsync("customer");
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<IReadOnlyCollection<Customer>>();
+            return await response.Content.ReadAsAsync<IReadOnlyCollection<Customer>>().ConfigureAwait(false);
         }
 
         public async Task<bool> UpsertCustomerAsync(UpsertCustomer customer)
         {
-            var response = await _httpClient.PostAsJsonAsync("customer", customer);
+            var response = await _httpClient.PostAsJsonAsync("customer", customer).ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
     }
