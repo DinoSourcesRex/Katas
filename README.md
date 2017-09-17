@@ -15,5 +15,5 @@ Some of the projects will require a connection string to a database as they will
  
 * CustomerManagement - A simple customer manager where you get insert, update and get customers. `Owin Hosted WebApi featuring NUnit, Specflow with Db tests and Rhinomocks` 
 * RoverExercise - An agent that moves over a grid, following commands. `Client library featuring NUnit, Specflow and Rhinomocks`
-* TennisScores - Reads Tennis scores from a file and outputs them. `Client library featuring NUnit, FluentAssertions and NSubstitute`
-* VendingMachine - Modelling the behaviour of a vending machine. `Client library featuring NUnit, Specflow and Rhinomocks`
+* TennisScores - Reads Tennis scores from a file and outputs them. `Client library featuring NUnit, FluentAssertions, NSubstitute and Autofixture`
+* VendingMachine - Modelling the behaviour of a vending machine. `Client library featuring NUnit, Specflow, Rhinomocks and Autofixture`

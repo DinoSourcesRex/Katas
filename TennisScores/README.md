@@ -1,12 +1,12 @@
-# VendingMachine
-A client for reading Tennis scores from an input file and outputting them. Featuring NUnit, FluentAssertions and NSubstitute.
+# Tennis Scores
+A client for reading Tennis scores from an input file and outputting them. Featuring NUnit, FluentAssertions,  NSubstitute and AutoFixture.
 
 #### Restoring
 > `Update-Package -reinstall`
 
 If you have any issues with the NuGet restore run `Update-Package -reinstall` from the Package Manager Console to re-path the hintpaths in the .csproj files. (This may not be an issue with VS2017)
 
-## Criteria
+## Preface
 
 This exercise is designed to demonstrate the skills a candidate has learned for writing clear and readable programs which model
 complex problem domains and which can be easily modified in the face of changing requirements. These skills are critically important for the role.
@@ -18,6 +18,8 @@ Maximum credit will be given for a program which is clearly written with minimal
 
 The submission may make use of any widely-available programming languages, although the use of C# is strongly encouraged. Credit will not be given for using third-party libraries to solve the problem: the ideal solution only uses library code for reading and writing files and for formatting text.
 
+## Criteria
+
 Problem description: Write a program which reads in descriptions of tennis matches and displays the current score in each match.
 
 The program should take two arguments on the command line: respectively the name of an input file and the name of an output file.
@@ -28,10 +30,11 @@ For each line in the input, the program should write a line to the output in the
 
 [completed set scores] [score in current set] [score in current game]
 
-For example: 3-6 6-4 0-2 0-15
-                         ^^^^ score in current game
-                     ^^^ score in current set
-             ^^^^^^^ scores in completed sets
+For example: 3-6 6-4 0-2 0-15\
+Where:
+3-6 6-4: scores in completed sets
+0-2: score in current set
+0-15: score in current game
 
 Each score is shown in the form 'n-m' where 'n' is the server's score and 'm' is the receiver's score. The server changes at the
 end of each game, and player A serves first.
