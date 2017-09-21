@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TennisScores.Infrastructure;
 using TennisScores.Infrastructure.IO;
@@ -21,30 +20,36 @@ namespace TennisScores.Controllers
             _scoreFormatter = scoreFormatter;
         }
 
-        public async Task EvaluateScores(string inputFileLocation, string outputFileLocation)
+        public async Task<bool> EvaluateScores(string inputFileLocation, string outputFileLocation)
         {
+            var succeeded = true;
+
             var readerResult = await _scoreReader.ReadFile(inputFileLocation);
 
-            if (readerResult.Count == 0)
+            if (readerResult.Count > 0)
             {
-                throw new ArgumentOutOfRangeException("No scores found.");
+                var formattedMatches = new List<string>();
+
+                foreach (var match in readerResult)
+                {
+                    var calculatedMatch = await _matchCalculator.Calculate(match);
+                    var formattedMatch = await _scoreFormatter.Format(calculatedMatch);
+                    formattedMatches.Add(formattedMatch);
+                }
+
+                var writerSucceeded = await _scoreWriter.WriteFile(outputFileLocation, formattedMatches);
+
+                if (!writerSucceeded)
+                {
+                    succeeded = false;
+                }
+            }
+            else
+            {
+                succeeded = false;
             }
 
-            var formattedMatches = new List<string>();
-
-            foreach (var match in readerResult)
-            {
-                var calculatedMatch = await _matchCalculator.Calculate(match);
-                var formattedMatch = await _scoreFormatter.Format(calculatedMatch);
-                formattedMatches.Add(formattedMatch);
-            }
-
-            var writerSucceeded = await _scoreWriter.WriteFile(outputFileLocation, formattedMatches);
-
-            if (!writerSucceeded)
-            {
-                throw new Exception("Failed to write to file.");
-            }
+            return succeeded;
         }
     }
 }

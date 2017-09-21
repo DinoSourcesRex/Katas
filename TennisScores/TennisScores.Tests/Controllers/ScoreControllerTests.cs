@@ -49,13 +49,14 @@ namespace TennisScores.Tests.Controllers
         }
 
         [Test]
-        public void EvaluateScores_WhenNoScores_ExpectArgumentOutOfBoundsException_WithMessage()
+        public async Task EvaluateScores_WhenNoScores_ExpectResultFalse()
         {
-            _mockScoreReader.ReadFile(Arg.Any<string>()).Returns(new List<TennisGame>());
+            _mockScoreReader.ReadFile(Arg.Any<string>())
+                .Returns(new List<TennisGame>());
 
-            Func<Task> action = async () => await _sut.EvaluateScores("input", "output");
+            var result = await _sut.EvaluateScores("input", "output");
 
-            action.ShouldThrow<ArgumentOutOfRangeException>().WithMessage("Specified argument was out of the range of valid values.\r\nParameter name: No scores found.");
+            result.Should().BeFalse();
         }
 
         [Test]
@@ -125,16 +126,16 @@ namespace TennisScores.Tests.Controllers
         }
         
         [Test]
-        public void EvaluateScores_WhenWriterFailes_ExpectException_WithMessage()
+        public async Task EvaluateScores_WhenWriterFailes_ExpectResultFalse()
         {
             _mockScoreReader.ReadFile(Arg.Any<string>()).Returns(new Fixture().Create<List<TennisGame>>());
             _mockMatchCalculator.Calculate(Arg.Any<TennisGame>()).Returns(new Fixture().Create<TennisMatch>());
             _mockScoreFormatter.Format(Arg.Any<TennisMatch>()).Returns(new Fixture().Create<string>());
             _mockScoreWriter.WriteFile(Arg.Any<string>(), Arg.Any<List<string>>()).Returns(false);
 
-            Func<Task> action = async () => await _sut.EvaluateScores("input", "output");
+            var result = await _sut.EvaluateScores("input", "output");
 
-            action.ShouldThrow<Exception>().WithMessage("Failed to write to file.");
+            result.Should().BeFalse();
         }
     }
 }

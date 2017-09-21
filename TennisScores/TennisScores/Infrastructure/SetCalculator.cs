@@ -44,8 +44,7 @@ namespace TennisScores.Infrastructure
                 if (setWon || finalGame.Points.Count == 0)
                 {
                     return Task.FromResult(
-                        new SetResult(
-                            new TennisSet(setWon, topPlayerChar, serverScore, receiverScore), 
+                        new SetResult(new TennisSet(setWon, topPlayerChar, serverScore, receiverScore), 
                             finalGame));
                 }
             }
