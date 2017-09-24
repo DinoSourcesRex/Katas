@@ -43,8 +43,16 @@ namespace TennisScores.Infrastructure
 
                 if (setWon || finalGame.Points.Count == 0)
                 {
+                    var advantagePoint = ' ';
+                    if (serverScore >= 3 && receiverScore >= 3)
+                    {
+                        advantagePoint = currentScores.OrderByDescending(s => s.Score).Select(s => s.Player).FirstOrDefault();
+                    }
+
+                    serverScore = serverScore.ScoreToTennisScore();
+                    receiverScore = receiverScore.ScoreToTennisScore();
                     return Task.FromResult(
-                        new SetResult(new TennisSet(setWon, topPlayerChar, serverScore, receiverScore), 
+                        new SetResult(new TennisSet(setWon, topPlayerChar, serverScore, receiverScore, advantagePoint), 
                             finalGame));
                 }
             }

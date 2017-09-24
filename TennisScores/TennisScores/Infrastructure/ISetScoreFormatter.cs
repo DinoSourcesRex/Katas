@@ -3,7 +3,7 @@ using TennisScores.Models;
 
 namespace TennisScores.Infrastructure
 {
-    public interface IScoreFormatter
+    public interface ISetScoreFormatter
     {
         Task<string> Format(TennisMatch matches);
     }

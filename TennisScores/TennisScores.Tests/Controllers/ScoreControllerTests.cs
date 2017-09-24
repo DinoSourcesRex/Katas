@@ -18,7 +18,7 @@ namespace TennisScores.Tests.Controllers
         private IScoreReader _mockScoreReader;
         private IScoreWriter _mockScoreWriter;
         private IMatchCalculator _mockMatchCalculator;
-        private IScoreFormatter _mockScoreFormatter;
+        private ISetScoreFormatter _mockSetScoreFormatter;
 
         private ScoreController _sut;
 
@@ -28,9 +28,9 @@ namespace TennisScores.Tests.Controllers
             _mockScoreReader = Substitute.For<IScoreReader>();
             _mockScoreWriter = Substitute.For<IScoreWriter>();
             _mockMatchCalculator = Substitute.For<IMatchCalculator>();
-            _mockScoreFormatter = Substitute.For<IScoreFormatter>();
+            _mockSetScoreFormatter = Substitute.For<ISetScoreFormatter>();
 
-            _sut = new ScoreController(_mockScoreReader, _mockScoreWriter, _mockMatchCalculator, _mockScoreFormatter);
+            _sut = new ScoreController(_mockScoreReader, _mockScoreWriter, _mockMatchCalculator, _mockSetScoreFormatter);
         }
 
         [Test]
@@ -87,7 +87,7 @@ namespace TennisScores.Tests.Controllers
 
             await _sut.EvaluateScores("input", "output");
 
-            await _mockScoreFormatter
+            await _mockSetScoreFormatter
                 .Received(games.Count)
                 .Format(Arg.Any<TennisMatch>());
         }
@@ -102,7 +102,7 @@ namespace TennisScores.Tests.Controllers
 
             _mockScoreReader.ReadFile(Arg.Any<string>()).Returns(games);
             _mockMatchCalculator.Calculate(Arg.Any<TennisGame>()).Returns(new Fixture().Create<TennisMatch>());
-            _mockScoreFormatter.Format(Arg.Any<TennisMatch>()).Returns(new Fixture().Create<string>());
+            _mockSetScoreFormatter.Format(Arg.Any<TennisMatch>()).Returns(new Fixture().Create<string>());
             _mockScoreWriter.WriteFile(Arg.Any<string>(), Arg.Any<List<string>>()).Returns(true);
 
             await _sut.EvaluateScores("input", outputPath);
@@ -117,7 +117,7 @@ namespace TennisScores.Tests.Controllers
         {
             _mockScoreReader.ReadFile(Arg.Any<string>()).Returns(new Fixture().Create<List<TennisGame>>());
             _mockMatchCalculator.Calculate(Arg.Any<TennisGame>()).Returns(new Fixture().Create<TennisMatch>());
-            _mockScoreFormatter.Format(Arg.Any<TennisMatch>()).Returns(new Fixture().Create<string>());
+            _mockSetScoreFormatter.Format(Arg.Any<TennisMatch>()).Returns(new Fixture().Create<string>());
             _mockScoreWriter.WriteFile(Arg.Any<string>(), Arg.Any<List<string>>()).Returns(true);
 
             Func<Task> action = async () => await _sut.EvaluateScores("input", "output");
@@ -130,7 +130,7 @@ namespace TennisScores.Tests.Controllers
         {
             _mockScoreReader.ReadFile(Arg.Any<string>()).Returns(new Fixture().Create<List<TennisGame>>());
             _mockMatchCalculator.Calculate(Arg.Any<TennisGame>()).Returns(new Fixture().Create<TennisMatch>());
-            _mockScoreFormatter.Format(Arg.Any<TennisMatch>()).Returns(new Fixture().Create<string>());
+            _mockSetScoreFormatter.Format(Arg.Any<TennisMatch>()).Returns(new Fixture().Create<string>());
             _mockScoreWriter.WriteFile(Arg.Any<string>(), Arg.Any<List<string>>()).Returns(false);
 
             var result = await _sut.EvaluateScores("input", "output");

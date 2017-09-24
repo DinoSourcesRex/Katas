@@ -61,7 +61,7 @@ namespace TennisScores.Tests.Infrastructure
         }
 
         [Test]
-        public async Task Calculate_3PointsInARow_ExpectGameNotComplete_NoWinner_ServerScore3_ReceiverScore0()
+        public async Task Calculate_3PointsInARow_ExpectGameNotComplete_NoWinner_ServerScore40_ReceiverScore0()
         {
             var game = new TennisGame
             (
@@ -77,12 +77,12 @@ namespace TennisScores.Tests.Infrastructure
 
             set.Set.GameCompleted.Should().BeFalse();
             set.Set.Winner.Should().Be(' ');
-            set.Set.ServerScore.Should().Be(3);
+            set.Set.ServerScore.Should().Be(40);
             set.Set.ReceiverScore.Should().Be(0);
         }
 
         [Test]
-        public async Task Calculate_4PointsInARow_ExpectGameComplete_WinnerA_ServerScore4_ReceiverScore0()
+        public async Task Calculate_4PointsInARow_ExpectGameComplete_WinnerA_ServerScore40_ReceiverScore0()
         {
             var game = new TennisGame
             (
@@ -99,12 +99,12 @@ namespace TennisScores.Tests.Infrastructure
 
             set.Set.GameCompleted.Should().BeTrue();
             set.Set.Winner.Should().Be('A');
-            set.Set.ServerScore.Should().Be(4);
+            set.Set.ServerScore.Should().Be(40);
             set.Set.ReceiverScore.Should().Be(0);
         }
 
         [Test]
-        public async Task Calculate_2PointsForA_4PointsForB_Expect_ExpectGameComplete_WinnerB_ServerScore2_ReceiverScore4()
+        public async Task Calculate_2PointsForA_4PointsForB_Expect_ExpectGameComplete_WinnerB_ServerScore30_ReceiverScore40()
         {
             var game = new TennisGame
             (
@@ -123,14 +123,13 @@ namespace TennisScores.Tests.Infrastructure
 
             set.Set.GameCompleted.Should().BeTrue();
             set.Set.Winner.Should().Be('B');
-            set.Set.ServerScore.Should().Be(2);
-            set.Set.ReceiverScore.Should().Be(4);
+            set.Set.ServerScore.Should().Be(30);
+            set.Set.ReceiverScore.Should().Be(40);
         }
 
         [Test]
-        public async Task Calculate_3PointsForB_4PointsForA_3PointsForB_ExpectGameComplete_WinnerB_ServerScore6_ReceiverScore4()
+        public async Task Calculate_3PointsForB_4PointsForA_3PointsForB_ExpectGameComplete_WinnerB_ServerScore40_ReceiverScore40()
         {
-
             var game = new TennisGame
             (
                 new List<char>
@@ -152,14 +151,13 @@ namespace TennisScores.Tests.Infrastructure
 
             set.Set.GameCompleted.Should().BeTrue();
             set.Set.Winner.Should().Be('B');
-            set.Set.ServerScore.Should().Be(6);
-            set.Set.ReceiverScore.Should().Be(4);
+            set.Set.ServerScore.Should().Be(40);
+            set.Set.ReceiverScore.Should().Be(40);
         }
 
         [Test]
-        public async Task Calculate_3PointsForA_4PointsForB_3PointsForA_ExpectGameComplete_WinnerA_ServerScore6_ReceiverScore4()
+        public async Task Calculate_3PointsForA_4PointsForB_3PointsForA_ExpectGameComplete_WinnerA_ServerScore40_ReceiverScore40()
         {
-
             var game = new TennisGame
             (
                 new List<char>
@@ -181,14 +179,13 @@ namespace TennisScores.Tests.Infrastructure
 
             set.Set.GameCompleted.Should().BeTrue();
             set.Set.Winner.Should().Be('A');
-            set.Set.ServerScore.Should().Be(6);
-            set.Set.ReceiverScore.Should().Be(4);
+            set.Set.ServerScore.Should().Be(40);
+            set.Set.ReceiverScore.Should().Be(40);
         }
 
         [Test]
-        public async Task Calculate_Deuce_3PointsB_4PointsA_2PointsB_ExpectGameNotComplete_NoWinner_ServerScore5_ReceiverScore4()
+        public async Task Calculate_Deuce_3PointsB_4PointsA_2PointsB_ExpectGameNotComplete_NoWinner_ServerScore40_ReceiverScore40()
         {
-
             var game = new TennisGame
             (
                 new List<char>
@@ -201,7 +198,7 @@ namespace TennisScores.Tests.Infrastructure
                     'A',
                     'A',
                     'B',
-                    'B',
+                    'B'
                 }
             );
 
@@ -209,8 +206,9 @@ namespace TennisScores.Tests.Infrastructure
 
             set.Set.GameCompleted.Should().BeFalse();
             set.Set.Winner.Should().Be(' ');
-            set.Set.ServerScore.Should().Be(5);
-            set.Set.ReceiverScore.Should().Be(4);
+            set.Set.ServerScore.Should().Be(40);
+            set.Set.ReceiverScore.Should().Be(40);
+            set.Set.AdvantagePoint.Should().Be('B');
         }
     }
 }

@@ -10,14 +10,14 @@ namespace TennisScores.Controllers
         private readonly IScoreReader _scoreReader;
         private readonly IScoreWriter _scoreWriter;
         private readonly IMatchCalculator _matchCalculator;
-        private readonly IScoreFormatter _scoreFormatter;
+        private readonly ISetScoreFormatter _setScoreFormatter;
 
-        public ScoreController(IScoreReader scoreReader, IScoreWriter scoreWriter, IMatchCalculator matchCalculator, IScoreFormatter scoreFormatter)
+        public ScoreController(IScoreReader scoreReader, IScoreWriter scoreWriter, IMatchCalculator matchCalculator, ISetScoreFormatter setScoreFormatter)
         {
             _scoreReader = scoreReader;
             _scoreWriter = scoreWriter;
             _matchCalculator = matchCalculator;
-            _scoreFormatter = scoreFormatter;
+            _setScoreFormatter = setScoreFormatter;
         }
 
         public async Task<bool> EvaluateScores(string inputFileLocation, string outputFileLocation)
@@ -33,7 +33,7 @@ namespace TennisScores.Controllers
                 foreach (var match in readerResult)
                 {
                     var calculatedMatch = await _matchCalculator.Calculate(match);
-                    var formattedMatch = await _scoreFormatter.Format(calculatedMatch);
+                    var formattedMatch = await _setScoreFormatter.Format(calculatedMatch);
                     formattedMatches.Add(formattedMatch);
                 }
 

@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		NuGet.config = NuGet.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TennisScores.Tests", "TennisScores.Tests\TennisScores.Tests.csproj", "{0F0F44C1-2082-480D-8D8A-02F997906D8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TennisScores.Tests", "TennisScores.Tests\TennisScores.Tests.csproj", "{0F0F44C1-2082-480D-8D8A-02F997906D8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TennisScores", "TennisScores\TennisScores.csproj", "{FB486436-C387-4A17-9A2E-43F8A6E9862E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TennisScores", "TennisScores\TennisScores.csproj", "{FB486436-C387-4A17-9A2E-43F8A6E9862E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

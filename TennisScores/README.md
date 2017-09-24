@@ -34,7 +34,7 @@ For example: 3-6 6-4 0-2 0-15\
 Where:
 3-6 6-4: scores in completed sets
 0-2: score in current set
-0-15: score in current game
+0-15: points in current game
 
 Each score is shown in the form 'n-m' where 'n' is the server's score and 'm' is the receiver's score. The server changes at the
 end of each game, and player A serves first.
@@ -60,7 +60,7 @@ Candidates unfamiliar with the rules of tennis may request an alternative exerci
 
 ### input
 
-
+[Linebreak]\
 A\
 AA\
 AAA\
@@ -121,3 +121,37 @@ AAAABBBBAAAABBBBAAAABBBBAAAAAAAAAAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAABBBBBBBBA
 3-6 0-0 0-15\
 7-5 0-0 15-0\
 3-6 6-4 0-0 0-15
+
+### Table Input / Output
+
+| Number | First Server | Input            | Output                                                                        |
+|--------|--------------|------------------|-------------------------------------------------------------------------------|
+| 1      | A            | 0-0              |                                                                               |
+| 2      | A            | 0-0 15-0         | A                                                                             |
+| 3      | A            | 0-0 30-0         | AA                                                                            |
+| 4      | A            | 0-0 40-0         | AAA                                                                           |
+| 5      | A            | 0-0 0-15         | B                                                                             |
+| 6      | A            | 0-0 0-30         | BB                                                                            |
+| 7      | A            | 0-0 0-40         | BBB                                                                           |
+| 8      | A            | 0-0 15-40        | BBBA                                                                          |
+| 9      | A            | 0-0 30-40        | BBBAA                                                                         |
+| 10     | A            | 0-0 40-40        | BBBAAA                                                                        |
+| 11     | A            | 0-0 A-40         | BBBAAAA                                                                       |
+| 12     | A            | 0-0 40-40        | BBBAAAAB                                                                      |
+| 13     | A            | 0-0 40-A         | BBBAAAABB                                                                     |
+| 14     | B            | 0-1              | AAAA                                                                          |
+| 15     | B            | 1-0              | BBBB                                                                          |
+| 16     | B            | 1-0              | BBBAAAABBB                                                                    |
+| 17     | B            | 0-1 0-15         | AAAAA                                                                         |
+| 18     | B            | 0-1 30-15        | AAAAABB                                                                       |
+| 19     | A            | 1-1              | AAAABBBB                                                                      |
+| 21     | A            | 2-2              | AAAABBBBAAAABBBB                                                              |
+| 22     | A            | 3-3              | AAAABBBBAAAABBBBAAAABBBB                                                      |
+| 23     | A            | 5-5              | AAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAABBBB                                      |
+| 24     | A            | 6-6              | AAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAABBBB                              |
+| 25     | A            | 6-4 0-0          | AAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAAAAAA                                      |
+| 26     | A            | 7-5 0-0          | AAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAAAAAA                              |
+| 27     | A            | 6-4 0-0 15-0     | AAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAAAAAAA                                     |
+| 28     | B            | 3-6 0-0 0-15     | AAAABBBBAAAABBBBAAAABBBBAAAAAAAAAAAAA                                         |
+| 29     | A            | 7-5 0-0 15-0     | AAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAAAAAAA                             |
+| 30     | B            | 3-6 6-4 0-0 0-15 | AAAABBBBAAAABBBBAAAABBBBAAAAAAAAAAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAABBBBBBBBA |
